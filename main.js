@@ -15,12 +15,13 @@
     e.preventDefault();
     
     var newitem=document.getElementById('item').value
-
+    var newitem1=document.getElementById('itemm').value
+    var result =newitem +" -> "+ newitem1
     var li=document.createElement('li');
     li.className="list-group-item"
 
-    li.appendChild(document.createTextNode(newitem));
-
+    li.appendChild(document.createTextNode(result));
+    
     itemlist.appendChild(li);
 
     // deleye btn addition 
