@@ -1,6 +1,4 @@
-const btn= document.querySelector('.btn');
 
-const container= document.querySelector('.container');
 
 const form= document.querySelector('#my-form');
 
@@ -8,9 +6,7 @@ const Name= document.querySelector('#name');
 
 const email= document.querySelector('#email');
 
-const msg= document.querySelector('.msg');
 
-const userlist= document.querySelector('#users')
 
 form.addEventListener('submit',onsubmit);
 
@@ -19,22 +15,28 @@ function onsubmit(e)
 
   e.preventDefault();
 
-  if(Name.value===" " || email.value===" ")
-  {
-   msg.classList.add('error'); 
-   msg.innerHTML="PLEASE ENTER ALL FIELD"
-   setTimeout(() => {
-   msg.remove()
-   }, 3000);
-  }
-else
-   {
-   localStorage.setItem('name',`${Name.value}`);
-   localStorage.setItem('email',`${email.value}`)
+
+    let myobj={
+      name:`${Name.value}`,
+      email:`${email.value}`
+    }
+       //no string type
+    //console.log(myobj);
+    //localStorage.setItem("candidate",myobj)
+
+   let myobj_converted=JSON.stringify(myobj);
+
+    localStorage.setItem("myobj",myobj_converted);
+
+   let myobjreconverted=JSON.parse(localStorage.getItem('myobj'))
+   console.log("1" + myobj)
+   console.log("2"+ myobj_converted)
+   console.log("3" +myobjreconverted);
+     
+   
 
   Name.value=" " ;
   email.value=" ";
    }
   
 
-}
