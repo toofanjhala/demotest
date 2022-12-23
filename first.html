@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="form" id="items" Details></label>
+    <form style="text-align: center;" id="item">
+        <h1 style.color="#red">APPOINTMENT APP</h1>
+        <br>
+        <label for="name" id="label1">Name</label>
+        <input type="text"  id="name1" required="" autofocus="" autocomplete="">
+        <label for="email" id="label2">Email</label>
+        <input type="email" id="email"  required autocomplete="">
+        <input type="submit" id="submit">
+
+        <ul id="list"></ul>
+            
+        
+
+    </form>
+    
+</body>
+<script>
+    let form =document.getElementById("item");
+    let Name =document.getElementById("name1")
+    let Email=document.getElementById("email")
+    let button=document.getElementById("submit")
+    
+
+    form.addEventListener('submit',onsubmit)
+
+    function onsubmit(e)
+    {
+        e.preventDefault();
+
+       let obj ={ name:`${Name.value}`, email:`${Email.value}`}
+       localStorage.setItem(`${Email.value}` ,JSON.stringify(obj));
+      
+       //var converteduser= JSON.parse(localStorage.getItem(`${Email.value}`))
+       
+       showNewUser(obj)
+       
+    
+    }
+         
+       function showNewUser(obj){
+
+        var converteduser= JSON.parse(localStorage.getItem(`${Email.value}`))
+        const keyarr=Object.keys(obj)
+       keyarr.forEach(key => {
+        console.log( obj[key])
+        });
+
+
+        const parentnode=document.getElementById('list');
+        const childHTML=`<li> ${converteduser.name}-${converteduser.email}</li>`
+        parentnode.innerHTML=parentnode.innerHTML + childHTML;
+       }
+    
+       
+     
+         
+        
+    
+
+
+
+</script>
+</html>
